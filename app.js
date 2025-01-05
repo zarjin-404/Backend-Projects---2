@@ -38,10 +38,10 @@ app.post('/create', async (req, res) => {
   }
 });
 
-app.get("/edit/:id", async (req, res) => {
+app.get("/edit/:userId", async (req, res) => {
   try {
-    const user = await User.findOne(req.params.id);
-    res.render("edit", { user });
+    const user = await User.findOne({ _id: req.params.userId });
+    res.render("edit" , { user });
   } catch (error) {
     console.error(error);
     res.status(500).send("Internal Server Error");
